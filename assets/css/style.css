@@ -1,0 +1,31 @@
+
+
+.vertical-center {
+    min-height: 100%;
+    min-height: 100vh;
+  
+    display: flex;
+    align-items: center;
+}
+
+.game-window{
+    max-width:80%;
+    height: 650px;
+}
+
+ul {
+    list-style: none;
+}
+
+ul li{
+    margin-top: 2.5em;
+}
+
+button{
+    width: 50%;
+    font-size: 20px;
+    margin-right:50px;
+}
+#start-button{
+    margin-left:50px;
+}

@@ -7,27 +7,32 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
         crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+        crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="assets/css/style.css">
     <title>Trivia Game</title>
 </head>
 
 <body>
 
-    <div id = "header">
+    <div id="header" class="container text-center">
         <h3>Trivia Time!!!</h3>
     </div>
 
-    <div id = "display">
-        <div id = "start-button"></div>
-        <div id = "countdown"></div>
-        <div id = "question"></div>
-        <div id = "answers"></div>
-        <div id = "correct-incorrect"></div>
-        <div id = "times-up"></div>
-        <div id = "game-over"></div>
-        <div id = "new-game"></div>
+    <div class="row mt-5">
+        <div class="col-md-8 offset-md-3 center-block">
+            <div id="display" class="jumbotron bg-success game-window text-center">
+                <div id="start-button"></div>
+                <div id="countdown"></div>
+                <div id="question"></div>
+                <div id="answers" class = "mt-5"></div>
+                <div id="correct-incorrect"></div>
+                <div id="right-wrong-gif"></div>
+                <div id="times-up"></div>
+                <div id="game-over"></div>
+                <div id="new-game"></div>
+            </div>
+        </div>
     </div>
 
-    <script src=assets/javascript/app.js> </script> 
-</body> 
-</html>
+    <script src=assets/javascript/app.js> </script> </body> </html>
