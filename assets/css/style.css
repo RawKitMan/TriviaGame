@@ -3,7 +3,7 @@ body{
     overflow: hidden;
     font-family: 'Niconne', cursive;
     color:black;
-    font-size: 25px;
+    font-size: 30px;
 }
 
 .vertical-center {
@@ -38,7 +38,7 @@ ul {
 }
 
 ul li{
-    margin-top: 1.5em;
+    margin-top: 1em;
 }
 
 button{
