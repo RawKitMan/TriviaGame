@@ -1,16 +1,36 @@
-
+body{
+    background-image: url("../images/Warcraft.jpg");
+    overflow: hidden;
+    font-family: 'Niconne', cursive;
+    color:black;
+    font-size: 25px;
+}
 
 .vertical-center {
     min-height: 100%;
-    min-height: 100vh;
-  
+    min-height: 100vh;  
     display: flex;
     align-items: center;
 }
 
+#header{
+    background: white;
+    width: 47%;
+    padding: 15px;
+    
+}
+
+#header h3{
+    font-size: 40px;
+}
+
 .game-window{
-    max-width:80%;
+    background: rgb(255, 255, 255) !important;
     height: 650px;
+}
+
+.border-width, header{
+    border-width: 10px !important;
 }
 
 ul {
@@ -18,14 +38,19 @@ ul {
 }
 
 ul li{
-    margin-top: 2.5em;
+    margin-top: 1.5em;
 }
 
 button{
     width: 50%;
-    font-size: 20px;
+    font-size: 30px;
+    font-weight: bold;
     margin-right:50px;
+    padding: 10px;
+    border: 3px solid blue;
+    background: yellow;
+    color: red;
 }
-#start-button{
+#start-button, #new-game{
     margin-left:50px;
 }

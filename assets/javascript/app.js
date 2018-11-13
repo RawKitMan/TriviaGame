@@ -1,5 +1,7 @@
+//Javascript will not run until the page is fully loaded
 $(document).ready(function () {
 
+    //Need an object to hold our questions and answers
     var questions = {
         1: { question: "Who is the son of King Varian Wrynn?", answers: ["Thrall", "Anduin Wrynn", "Magni Bronzebeard", "Cho'gall"] },
         2: { question: "What is the name of Thrall's hammer", answers: ["Doomhammer", "Frostmourne", "Ashbringer", "Shalamayne"] },
@@ -14,13 +16,17 @@ $(document).ready(function () {
         
     };
 
+    /*We need to keep track of how many questions the user, got right, got wrong, didn't answer, our timer, which question we are on,
+     and something to help our timer count down the seconds*/
+    
     var guessedRight = 0;
     var guessedWrong = 0;
     var didNotAnswer = 0;
-
     var questionCounter = 1;
     var questionTimer = 10;
     var timerInterval;
+
+    //When the user clicks the start button, the game will begin and the button goes away.
 
     $("#start-button").html("<button>Click to Start</button>");
 
@@ -31,20 +37,35 @@ $(document).ready(function () {
     });
 
 
+    //This function pulls up each question and gets rid of any excess text/buttons/gifs.
     function run() {
 
+        //Every time we get a new question, the timer needs to be reset
         questionTimer = 10;
         clearInterval(timerInterval);
 
+        //We show the answers as a list of buttons to click on.
         var buttonList = $("<ul>");
         $("#answers").append(buttonList);
+
+        //Our question timer display
         $("#countdown").html("<h2>You have: " + questionTimer + "  seconds</h2>");
+
+        //All we want to show is the question, the timer, and the available answer choices
         $("#correct-incorrect").empty();
         $("#right-wrong-gif").empty();
         $("#times-up").empty();
+        $("#times-up-gif").empty();
+
+        //Sets our timer to decrease by one every second
         timerInterval = setInterval(decrement, 1000);
+
+        //Here's our question
         $("#question").html(questions[questionCounter].question);
 
+
+        //This is how we generate our list of answers. We be sure to give the id for the right answer and the wrong answers
+        //for later functions.
         for (var i = 0; i < 4; i++) {
             var answerText;
             var answer = questions[questionCounter].answers[i];
@@ -95,12 +116,15 @@ $(document).ready(function () {
         }
     }
 
+    //This function helps decrease our timer value
     function decrement() {
 
         questionTimer--;
 
         $("#countdown").html("<h2>You have: " + questionTimer + "  seconds</h2>");
 
+        //If the timer gets to 0, then the timer is stopped, the user is informed the time is up, is shown the correct answer.
+        
         if (questionTimer === 0) {
             stop();
             didNotAnswer++;
@@ -111,22 +135,31 @@ $(document).ready(function () {
             $("#answers").empty();
             $("#correct-incorrect").empty();
             $("#times-up").html("<p>Time's up. The correct answer is " + correctAnswer);
+            $("#times-up-gif").html("<img src = 'assets/images/Times-up.gif' alt = 'General confusion meme gif' />");
 
+            //If there are more questions to ask, then after 4 seconds, the next question will pop up
             if (questionCounter < 11) {
                 setTimeout(run, 4000);
             }
+
+            //If there are no more questions, then after 4 seconds, the game over screen appears.
             else {
                 setTimeout(gameOver, 4000);
             }
         }
     }
 
+
+    //Just need to stop the timer if a question is answered or if the timer runs out. Otherwise, the timer value just keeps going.
     function stop() {
 
         clearInterval(timerInterval);
 
     }
 
+
+    //If the user clicks on the right answer or wrong answer, he/she will be notified with a message and a gif. Then after 4 seconds
+    //Either the next question pops up or the game over screen appears.
     $("#answers").on("click", "#right", function () {
         guessedRight++;
         questionCounter++;
@@ -164,20 +197,25 @@ $(document).ready(function () {
         }
     });
 
+    //This shows the game over screen where the user sees how many they got right, wrong, or didn't answer. 
     function gameOver() {
         $("#countdown").empty();
         $("#question").empty();
         $("#answers").empty();
         $("#correct-incorrect").empty();
         $("#right-wrong-gif").empty();
+        $("#times-up").empty();
+        $("#times-up-gif").empty();
         $("#game-over").append("<p>Game Over</p>");
         $("#game-over").append("<p>Correct Answers: " + guessedRight + "</p>");
         $("#game-over").append("<p>Incorrect Answers: " + guessedWrong + "</p>");
         $("#game-over").append("<p>Unanswered: " + didNotAnswer + "</p>");
 
+        //Does the user wanna play again?
         $("#new-game").html("<button id>Reset</button>")
     }
 
+    //If the user wants to play again, they click the button which resets everything and starts the game again at the first question.
     $("#new-game").click(function(){
         $("#game-over").empty();
         questionCounter = 1;
