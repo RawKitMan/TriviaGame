@@ -199,6 +199,7 @@ $(document).ready(function () {
 
     //This shows the game over screen where the user sees how many they got right, wrong, or didn't answer. 
     function gameOver() {
+        
         $("#countdown").empty();
         $("#question").empty();
         $("#answers").empty();
@@ -219,6 +220,9 @@ $(document).ready(function () {
     $("#new-game").click(function(){
         $("#game-over").empty();
         questionCounter = 1;
+        guessedRight = 0;
+        guessedWrong = 0;
+        didNotAnswer = 0;
         $("#new-game button").remove();
         $("#countdown").html("<h2>You have: " + questionTimer + "  seconds</h2>");
         run();
